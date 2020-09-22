@@ -16,12 +16,10 @@ import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletContext;
 
 @Slf4j
-//@EnableWebMvc
 @Configuration
 @RequiredArgsConstructor
 public class TomcatConfig {
@@ -51,7 +49,7 @@ public class TomcatConfig {
     public DispatcherServlet dispatcherServlet() {
         DispatcherServlet dispatcherServlet =
                 new DispatcherServlet(rootContext);
-        val wr = Tomcat.addServlet(apacheContainer(), "dispatcher", dispatcherServlet);
+        Tomcat.addServlet(apacheContainer(), "dispatcher", dispatcherServlet);
         apacheContainer().addServletMappingDecoded("/*", "dispatcher");
         return dispatcherServlet;
     }

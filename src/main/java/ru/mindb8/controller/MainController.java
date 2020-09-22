@@ -7,6 +7,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.mindb8.dto.ResponseDto;
 import ru.mindb8.dto.SimpleDto;
 
 @RequestMapping
@@ -17,7 +18,7 @@ public class MainController {
 
     @PostMapping(path = "/request/{param}")
     @ResponseBody
-    ResponseEntity<String> request(@PathVariable("param") String param,  @RequestBody SimpleDto body) {
-        return ResponseEntity.ok().body("Ok! " +  body.getId() + " " + param);
+    ResponseEntity<ResponseDto> request(@PathVariable("param") String param, @RequestBody SimpleDto body) {
+        return ResponseEntity.ok().<ResponseDto>body(new ResponseDto("Ok! " +  body.getId() + " " + param));
     }
 }
