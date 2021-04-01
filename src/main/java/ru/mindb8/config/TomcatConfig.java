@@ -20,7 +20,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 
 @Slf4j
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class TomcatConfig {
 
@@ -46,11 +46,11 @@ public class TomcatConfig {
     }
 
     @Bean
-    public DispatcherServlet dispatcherServlet() {
+    public DispatcherServlet dispatcherServlet(Context apacheContainer) {
         DispatcherServlet dispatcherServlet =
                 new DispatcherServlet(rootContext);
-        Tomcat.addServlet(apacheContainer(), "dispatcher", dispatcherServlet);
-        apacheContainer().addServletMappingDecoded("/*", "dispatcher");
+        Tomcat.addServlet(apacheContainer, "dispatcher", dispatcherServlet);
+        apacheContainer.addServletMappingDecoded("/*", "dispatcher");
         return dispatcherServlet;
     }
 

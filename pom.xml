@@ -6,7 +6,12 @@
 
     <groupId>ru.mindb8</groupId>
     <artifactId>sandcube</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>biosphere</module>
+        <module>spatial-tree</module>
+    </modules>
 
     <dependencies>
         <dependency>
